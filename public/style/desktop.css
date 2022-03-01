@@ -1,0 +1,20 @@
+.desktop-nav{
+    display: inline-flex;
+    flex-direction: row;
+    align-content: space-around;
+}
+
+.desktop-nav .li-header{
+    padding-right: 10px;
+}
+
+.home-container{
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: 2fr 1fr;
+    padding: 10px;
+}
+
+.home-container .risk-table{
+    align-self: flex-start;
+}
