@@ -1,4 +1,16 @@
+import axios from 'axios';
+import { useState,useEffect } from 'react';
+
 function Metrics(props) {
+    
+    const [metrics, setMetrics] = useState([])
+    useEffect(() => {
+        axios.get('http://localhost:5000/metrics')
+        .then((data)=>{
+            setMetrics(data.data)
+        })
+    }, [])
+    
     return(
         <>
             <p className="p-title">MÉTRICAS</p>
@@ -11,7 +23,10 @@ function Metrics(props) {
             <p className="p-htext">
                 Por favor seleccione el tipo de filtrado de datos.
             </p>
-            
+            <p>
+                {JSON.stringify(metrics)}
+
+            </p>
             <input className="input-filters" 
                 list="filters" 
                 placeholder="Ingrese un tipo de filtro"
