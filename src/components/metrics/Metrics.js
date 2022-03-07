@@ -1,16 +1,10 @@
-import axios from 'axios';
-import { useState,useEffect } from 'react';
+import { useContext } from 'react';
+import {MetricsFilter} from './MetricsFilter'
+
+import {MetricsContext} from '../../context/MetricsContext'
 
 function Metrics(props) {
-    
-    const [metrics, setMetrics] = useState([])
-    useEffect(() => {
-        axios.get('http://localhost:5000/metrics')
-        .then((data)=>{
-            setMetrics(data.data)
-        })
-    }, [])
-    
+    const {loading} = useContext(MetricsContext)
     return(
         <>
             <p className="p-title">MÉTRICAS</p>
@@ -19,27 +13,10 @@ function Metrics(props) {
                 En esta sección podra encontrar la información de
                 accidentalidad de Medellin según varios filtros.
             </p>
-
-            <p className="p-htext">
-                Por favor seleccione el tipo de filtrado de datos.
-            </p>
-            <p>
-                {JSON.stringify(metrics)}
-
-            </p>
-            <input className="input-filters" 
-                list="filters" 
-                placeholder="Ingrese un tipo de filtro"
-            />
-
-            <datalist id="filters">
-                <option className="filters-option">DÍAS</option>
-                <option className="filters-option">MESES</option>
-                <option className="filters-option">BARRIOS</option>
-                <option className="filters-option">GRAVEDAD</option>
-                <option className="filters-option">TIPO DE ACCIDENTE</option>
-            </datalist>
-
+            {!!loading&&<p>Estamos cargando</p>}
+            {!loading&&
+                <MetricsFilter/>
+            }
         </>
     )
 }

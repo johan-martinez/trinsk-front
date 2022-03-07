@@ -4,21 +4,24 @@ import {Home} from './components/home/Home';
 import {Metrics} from './components/metrics/Metrics';
 import { Navbar } from './components/navbar/Navbar';
 import {Footer} from './components/footer/Footer';
+import {MetricsProvider} from './context/MetricsContext'
 
 function App() {
   return (
     <div className='app-container'>
-      <Router>
-        <Navbar/>
-        <div className='container'>
-          <div className='main-container'>
-            <Routes>
-              <Route path='/' element={<Home/>}/>
-              <Route path='/metrics' element={<Metrics/>}/>
-            </Routes>
+      <MetricsProvider>
+        <Router>
+          <Navbar/>
+          <div className='container'>
+            <div className='main-container'>
+              <Routes>
+                <Route path='/' element={<Home/>}/>
+                <Route path='/metrics' element={<Metrics/>}/>
+              </Routes>
+            </div>
           </div>
-        </div>
-      </Router>
+        </Router>
+      </MetricsProvider>
       <Footer/>
     </div>
   );
