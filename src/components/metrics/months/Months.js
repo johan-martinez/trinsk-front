@@ -58,6 +58,10 @@ function Months(props) {
         datasets:[
             {
                 label:'ACCIDENTES',
+                borderColor:'#2666CF',
+                backgroundColor:[
+                    '#2666CF',
+                ],
                 data:totals
             }
         ]
@@ -70,9 +74,9 @@ function Months(props) {
     
 
     return(
-        <>
+        <div className='metrics-div'>
             <Line data={data} options={options}/>
-            <table >
+            <table className='table-metrics'>
                 <tr>
                     <th >
                         AÑO
@@ -83,31 +87,31 @@ function Months(props) {
                     {
                         months.map(e=>(<tr>
                             <td>{e.year}</td>
-                            <td>{e.months['01']}</td>
-                            <td>{e.months['02']}</td>
-                            <td>{e.months['03']}</td>
-                            <td>{e.months['04']}</td>
-                            <td>{e.months['05']}</td>
-                            <td>{e.months['06']}</td>
-                            <td>{e.months['07']}</td>
-                            <td>{e.months['08']}</td>
-                            <td>{e.months['09']}</td>
-                            <td>{e.months['10']}</td>
-                            <td>{e.months['11']}</td>
-                            <td>{e.months['12']}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.months['01']||0)}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.months['02']||0)}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.months['03']||0)}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.months['04']||0)}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.months['05']||0)}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.months['06']||0)}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.months['07']||0)}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.months['08']||0)}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.months['09']||0)}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.months['10']||0)}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.months['11']||0)}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.months['12']||0)}</td>
                         </tr>))
                     }
-                    <tr>
+                    <tr className='table-metrics-total'>
                         <td>TOTAL</td>
                         {
                             Object.values(totals).map(e=>(
-                                <td>{e}</td>
+                                <td>{Intl.NumberFormat('en-US').format(e)}</td>
                             ))
                         }
                     </tr>
                 </tbody>
             </table>
-        </>
+        </div>
     )
 }
 

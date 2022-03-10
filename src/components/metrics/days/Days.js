@@ -47,7 +47,10 @@ function Days(props) {
         datasets:[
             {
                 label:'ACCIDENTES',
-                data:totals
+                backgroundColor:[
+                    '#5D8BF4',
+                ],
+                data:totals,
             }
         ]
     }
@@ -58,12 +61,9 @@ function Days(props) {
     }
 
     return (
-        <>
-            <div >
-                <Bar data={data} options={options}></Bar>
-                
-            </div>
-            <table >
+        <div className='metrics-div'>
+            <Bar data={data} options={options} className='metrics-graph'></Bar>
+            <table className='table-metrics'>
                 <tr>
                     <th >
                         AÑO
@@ -74,26 +74,26 @@ function Days(props) {
                     {
                         days.map(e=>(<tr>
                             <td>{e.year}</td>
-                            <td>{e.days['LUNES    ']}</td>
-                            <td>{e.days['MARTES   ']}</td>
-                            <td>{e.days['MIÉRCOLES']}</td>
-                            <td>{e.days['JUEVES   ']}</td>
-                            <td>{e.days['VIERNES  ']}</td>
-                            <td>{e.days['SÁBADO   ']}</td>
-                            <td>{e.days['DOMINGO  ']}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.days['LUNES    '])}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.days['MARTES   '])}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.days['MIÉRCOLES'])}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.days['JUEVES   '])}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.days['VIERNES  '])}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.days['SÁBADO   '])}</td>
+                            <td>{Intl.NumberFormat('en-US').format(e.days['DOMINGO  '])}</td>
                         </tr>))
                     }
-                    <tr>
+                    <tr className='table-metrics-total'>
                         <td>TOTAL</td>
                         {
                             Object.values(totals).map(e=>(
-                                <td>{e}</td>
-                            ))
-                        }
+                                <td>{Intl.NumberFormat('en-US').format(e)}</td>
+                                ))
+                            }
                     </tr>
                 </tbody>
             </table>
-        </>
+        </div>
     )
 }
 

@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import {Days} from './days/Days';
 import { Months } from './months/Months';
 import { Risk } from './risk/Risk';
+import {Streets} from './streets/Streets';
+import { Types } from './types/Types';
 
 function MetricsFilter() {
+    const [filter, setFilter] = useState('')
     
     return(
         <>
@@ -12,6 +16,8 @@ function MetricsFilter() {
             <input className="input-filters" 
                 list="filters" 
                 placeholder="Ingrese un tipo de filtro"
+                value={filter}
+                onChange={e=>setFilter(e.target.value)}
             />
             <datalist id="filters">
                 <option className="filters-option">DÍAS</option>
@@ -20,11 +26,13 @@ function MetricsFilter() {
                 <option className="filters-option">GRAVEDAD</option>
                 <option className="filters-option">TIPO DE ACCIDENTE</option>
             </datalist>
-            <Days/>
+
+            {filter.toLocaleUpperCase()==='DÍAS'&&<Days/>}
+            {filter.toLocaleUpperCase()==='MESES'&&<Months/>}
+            {filter.toLocaleUpperCase()==='BARRIOS'&&<Streets/>}
+            {filter.toLocaleUpperCase()==='GRAVEDAD'&&<Risk/>}
+            {filter.toLocaleUpperCase()==='TIPO DE ACCIDENTE'&&<Types/>}
             
-            <Months/>
-            
-            <Risk/>
         </>
     )
 }

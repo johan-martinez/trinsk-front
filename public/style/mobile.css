@@ -113,6 +113,7 @@ html{
     border-collapse: collapse;
     border: 1px solid #9D9D9D;
 }
+
 .risk-table th{
     padding: 5px;
     width: 70%;
@@ -161,4 +162,45 @@ footer{
     width: 1.4rem;
     height: 1.4rem;
     align-self: center;
+}
+
+.table-metrics{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+    min-height: fit-content;
+    border-collapse: collapse;
+    border: 1px solid #9D9D9D;
+}
+
+.table-metrics th{
+    padding: 5px;
+    font-family: 'Roboto';
+    font-size: 1vw;
+    background-color: #EEEBDD;
+    border-collapse: collapse;
+    border: 1px solid #9D9D9D;
+}
+
+.table-metrics tr td{
+    padding: 5px;
+    border-collapse: collapse;
+    font-family: 'Roboto';
+    font-size: 1vw;
+    border: 1px solid #9D9D9D;
+    text-align: center;
+    align-items: center;
+}
+
+.table-metrics-total{
+    background-color: #D1D1D1;
+    font-weight: bold;
+}
+
+.metrics-div{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    flex-direction: column;
 }

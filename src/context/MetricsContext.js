@@ -14,6 +14,8 @@ function MetricsProvider(props) {
     let days=(metrics!==[])?getDayData():[];
     let months=(metrics!==[])?getMonthData():[];
     let risks=(metrics!==[])?getRiskData():[];
+    let streets=(metrics!==[])?getStreetsData():[];
+    let types=(metrics!==[])?getTypesData():[];
     
     function getRiskData(props) {
         let r=[];
@@ -31,6 +33,19 @@ function MetricsProvider(props) {
         metrics.map(e=>{r.push({year:e.year, days:e.dias})});
         return r;
     }
+
+    function getStreetsData() {
+        let r=[];
+        metrics.map(e=>{r.push({year:e.year, streets:e.barrios})});
+        return r;
+    }
+
+    function getTypesData() {
+        let r=[];
+        metrics.map(e=>{r.push({year:e.year, types:e['tipos_accidente']})});
+        return r;
+    }
+
     useEffect(() => {
         getMetrics()
     }, [])
@@ -51,7 +66,9 @@ function MetricsProvider(props) {
                 loading,
                 days,
                 months,
-                risks
+                risks,
+                streets,
+                types
             }}
         >
             {props.children}
