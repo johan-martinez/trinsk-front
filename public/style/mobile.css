@@ -93,9 +93,12 @@ html{
     margin-top: 5px;
     width: 100%;
 }
-
+#filters{
+    width: 100%;
+}
 .filters-option{
     width: 100%;
+    
 }
 
 .iframe-map{
@@ -104,6 +107,10 @@ html{
     border: 1px solid #9D9D9D;
     border-radius: 22px;
     padding: 5px 0;
+}
+
+.iframe-map-hidden{
+    visibility: hidden;
 }
 
 .risk-table{
@@ -204,3 +211,4 @@ footer{
     padding: 10px;
     flex-direction: column;
 }
+

@@ -13,7 +13,7 @@ function MetricsFilter() {
             <p className="p-htext">
                 Por favor seleccione el tipo de filtrado de datos.
             </p>
-            <input className="input-filters" 
+            <input className="input-filters" name="filters"
                 list="filters" 
                 placeholder="Ingrese un tipo de filtro"
                 value={filter}

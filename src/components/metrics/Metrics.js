@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import {MetricsFilter} from './MetricsFilter'
+import {Spinner} from '../home/Spinner'
 
 import {MetricsContext} from '../../context/MetricsContext'
 
@@ -13,7 +14,7 @@ function Metrics(props) {
                 En esta sección podra encontrar la información de
                 accidentalidad de Medellin según varios filtros.
             </p>
-            {!!loading&&<p>Estamos cargando</p>}
+            {!!loading&&<Spinner speed={2} customText={"Obteniendo las métricas"}></Spinner>}
             {!loading&&
                 <MetricsFilter/>
             }
